@@ -53,6 +53,7 @@ const validateCred = arr => {
 }
 */
 
+// Deze functie controleerd of de creditcard nummers correct zijn
 const validateCred = arr => {
     let total = 0
     for (let i = arr.length - 1; i >= 0; i--) {
@@ -68,6 +69,7 @@ const validateCred = arr => {
     return total %10 == 0
 }
 
+// Deze functie loopt door de batch array heen om meer te checken
 const findIvalidCards = nestArr => {
     let results = []
     for (let i = 0; i < nestArr.length; i++) {
@@ -79,6 +81,7 @@ const findIvalidCards = nestArr => {
     return results
 }   
 
+// Deze functie geeft een array met alle bedrijven dit slechte nummers hebben
 const idInvalidCardCompanies = arr => {
     badCards = findIvalidCards(arr)
     badCompanies = [];
@@ -112,6 +115,7 @@ const idInvalidCardCompanies = arr => {
     return badCompanies
 }
 
+// Deze functie geeft de waarde die de kaart verkeerd heeft
 const correctCred = arr => {
     let total = 0
     for (let i = arr.length - 1; i >= 0; i--) {
@@ -126,6 +130,8 @@ const correctCred = arr => {
     }
     return total %10
 }
+
+// Deze functie neemt een kaart en geeft terug of hij klopt en anders wat hij moet zijn
 const cardCorrector = number => {
     for (i = 0; i < number.length; i++) {
         if (validateCred(number[i]) === false) {
@@ -142,6 +148,8 @@ const cardCorrector = number => {
         }
     }
 }
+
+// In deze functie kun je zelf een nummer invullen
 const numberCorrector = number => {
         if (validateCred(number) === false) {
             const wrong = number
@@ -156,6 +164,8 @@ const numberCorrector = number => {
             console.log( 'Number is correct')
         }
 }
+
+// Deze functie maakt van een string een array
 const checkNumber = ccNumber => {
     let array = []
     array = ccNumber.split('')
@@ -164,5 +174,5 @@ const checkNumber = ccNumber => {
 }
 
 //console.log(idInvalidCardCompanies(batch))
-checkNumber('38746592843756897')
-
+//checkNumber('38746592843756897')
+console.log(findIvalidCards(batch))
